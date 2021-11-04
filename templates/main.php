@@ -15,8 +15,8 @@
     <h2>Открытые лоты</h2>
   </div>
   <ul class="lots__list">
-    <?php foreach ($array_lots as $lot): ?>
-      <?=include_template('lot.php', ['lot' => $lot]); ?>
+    <?php foreach ($array_lots as $lot_id => $lot): ?>
+      <?=include_template('_lot.php', ['lot' => $lot, 'lot_id' => $lot_id]); ?>
     <?php endforeach; ?>
   </ul>
 </section>

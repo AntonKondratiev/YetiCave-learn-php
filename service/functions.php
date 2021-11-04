@@ -38,3 +38,18 @@ function timeCount ($time_end, $time_start) {
 
   return $res_time;
 }
+
+// валидация формы и вывод класса
+
+function check_input($errors, $name_input) {
+  $ckeck = false;
+
+  foreach ($errors as $key) {
+    if ($key === $name_input) {
+      $ckeck = true;
+    }
+  }
+
+  return $ckeck;
+}
+

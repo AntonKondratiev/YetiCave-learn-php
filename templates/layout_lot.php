@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
-  <meta charset="UTF-8">
-  <title><?= $title_site; ?></title>
-  <link href="css/normalize.min.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title><?= $array_lots[$_GET['lot_id']]['name'] ?></title>
+    <link href="css/normalize.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -15,7 +14,9 @@
 </header>
 
 <main class="container">
-  <?= $content; ?>
+    <section class="lot-item container">
+        <?= $content; ?>
+    </section>
 </main>
 
 <footer class="main-footer">
@@ -23,5 +24,4 @@
 </footer>
 
 </body>
-
 </html>
