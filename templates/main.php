@@ -16,7 +16,7 @@
   </div>
   <ul class="lots__list">
     <?php foreach ($array_lots as $lot_id => $lot): ?>
-      <?=include_template('_lot.php', ['lot' => $lot, 'lot_id' => $lot_id]); ?>
+      <?=include_template('_lots.php', ['lot' => $lot, 'lot_id' => $lot_id]); ?>
     <?php endforeach; ?>
   </ul>
 </section>

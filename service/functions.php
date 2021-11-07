@@ -39,7 +39,7 @@ function timeCount ($time_end, $time_start) {
   return $res_time;
 }
 
-// валидация формы и вывод класса
+// валидация формы и вываод класса
 
 function check_input($errors, $name_input) {
   $ckeck = false;
@@ -53,3 +53,26 @@ function check_input($errors, $name_input) {
   return $ckeck;
 }
 
+// отображение ошибки
+
+function check_valid($valName, $array_name, $text_error_field) {
+
+  $res = false;
+
+  if ($array_name[$valName] === $text_error_field) {
+    $res = true;
+  }
+
+  return $res;
+}
+
+// вывод результата
+
+function result_value($name, $array_name, $text_error_field) {
+  $res = false;
+  if ($array_name[$name] !== $text_error_field) {
+    $res = $array_name[$name];
+  }
+
+  return $res;
+}
