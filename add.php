@@ -15,7 +15,7 @@ $array_name_form = [
   'lot-name' => '',
   'category' => '',
   'message' => '',
-//  'file' => '',
+  'file' => '',
   'lot-rate' => '',
   'lot-step' => '',
   'lot-date' => ''
@@ -39,6 +39,21 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
     $array_name_form['lot-step'] = $text_error_field;
   }
 
+  $type_files = ['image/jpeg', 'image/png', 'image/jpg'];
+
+  if (isset($_FILES['file']['name'])) {
+    if ($_FILES['file']['type'] == 'image/jpeg' || $_FILES['file']['type'] !== 'image/jpg' || $_FILES['file']['type'] !== 'image/png' ) {
+      
+      $id = count($array_lots) + 1;
+      $filename = 'img/lot-' . $id . '.jpg';
+      
+      $path = $_FILES['file']['name'];
+      $res = move_uploaded_file($_FILES['file']['tmp_name'], 'img/' . $path);
+//      copy($_FILES['file']['tmp_name'], $filename);
+      $array_name_form['file'] = 'img/' . $_FILES['file']['name'];
+    }
+  };
+
   foreach ($array_name_form as $k => $v) {
     if ($v === $text_error_field) {
       $error = 'true';
@@ -48,7 +63,7 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
   if ($error === 'false') {
     $lotNew = [
       'name' => $array_name_form['lot-name'],
-      'url_img' => 'img/lot-1.jpg',
+      'url_img' => $array_name_form['file'],
       'description' => $array_name_form['message'],
       'minBet' => $array_name_form['lot-rate'],
       'minStep' => $array_name_form['lot-step'],

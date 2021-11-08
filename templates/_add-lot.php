@@ -1,5 +1,5 @@
 
-  <form class="form form--add-lot container <?php if ($error === 'true'): ?>form--invalid<?php endif; ?>" action="/add.php" method="post"> <!-- form--invalid -->
+  <form class="form form--add-lot container <?php if ($error === 'true'): ?>form--invalid<?php endif; ?>" action="/add.php" method="post" enctype="multipart/form-data"> <!-- form--invalid -->
     <h2>Добавление лота</h2>
     <div class="form__container-two">
       <div class="form__item <?php if (check_valid('lot-name', $array_name, $text_error_field)): ?> form__item--invalid <?php endif; ?>">
@@ -26,7 +26,7 @@
       <textarea id="message" name="message" placeholder="Напишите описание лота"><?= result_value('message', $array_name, $text_error_field) ?></textarea>
       <span class="form__error">Напишите описание лота</span>
     </div>
-    <div class="form__item form__item--file <?php if (check_valid('file', $array_name, $text_error_field)): ?> form__item--uploaded <?php endif; ?>">
+    <div class="form__item form__item--file">
       <label>Изображение</label>
       <div class="preview">
         <button class="preview__remove" type="button">x</button>
@@ -35,7 +35,7 @@
         </div>
       </div>
       <div class="form__input-file">
-        <input class="visually-hidden" type="file" id="photo2" value="<?= result_value('file', $array_name, $text_error_field) ?>" name="file">
+        <input class="visually-hidden" type="file" id="photo2" name="file">
         <label for="photo2">
           <span>+ Добавить</span>
         </label>
